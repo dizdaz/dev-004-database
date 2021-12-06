@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://localhost:8080/ -->
+<sql>
+<datatypes db="sqlalchemy">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="1" sql="sa.Integer" re="INTEGER" quote=""/>
+		<type label="Float" length="1" sql="sa.Float" re="DOUBLE" quote=""/>
+		<type label="Decimal" length="1" sql="sa.Numeric" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+        <type label="String" length="1" sql="sa.String" quote="'"/>
+        <type label="Text" length="0" sql="sa.Text" quote="'"/>
+    </group>
+
+    <group label="Date &amp; Time" color="rgb(200,255,200)">
+        <type label="Date" length="0" sql="sa.Date" quote="'"/>
+        <type label="Time" length="0" sql="sa.Time" quote="'"/>
+        <type label="Datetime" length="0" sql="sa.DateTime" quote="'"/>
+        <type label="Timestamp" length="0" sql="sa.Timestamp" quote="'"/>
+        <type label="Interval" length="0" sql="sa.Interval" quote="'"/>
+    </group>
+    
+    <group label="Miscellaneous" color="rgb(200,200,255)">
+        <type label="Boolean" length="0" sql="sa.Boolean" quote=""/>
+        <type label="BLOB" length="1" sql="sa.Binary" quote="'"/>
+        <type label="Pickle" length="0" sql="sa.PickleType" quote=""/>
+    </group>
+</datatypes><table x="275" y="143" name="users">
+<row name="id" null="0" autoincrement="1">
+<datatype>sa.Integer</datatype>
+</row>
+<row name="username" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+<default>'NULL'</default></row>
+<row name="firstname" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="lastname" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="password" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="email" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="created_on" null="0" autoincrement="0">
+<datatype>sa.Date</datatype>
+</row>
+<row name="last_updated" null="0" autoincrement="0">
+<datatype>sa.DateTime</datatype>
+</row>
+<row name="last_login" null="0" autoincrement="0">
+<datatype>sa.DateTime</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="">
+<part>username</part>
+</key>
+</table>
+<table x="541" y="255" name="projects">
+<row name="id" null="0" autoincrement="1">
+<datatype>sa.Integer</datatype>
+</row>
+<row name="project_name" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="started_on" null="0" autoincrement="0">
+<datatype>sa.Date</datatype>
+</row>
+<row name="client" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="department" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="budget" null="1" autoincrement="0">
+<datatype>sa.Float</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="">
+<part>project_name</part>
+</key>
+</table>
+<table x="833" y="365" name="roles">
+<row name="id" null="0" autoincrement="1">
+<datatype>sa.Integer</datatype>
+</row>
+<row name="role_name" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<row name="rule" null="0" autoincrement="0">
+<datatype>sa.String(255)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<key type="UNIQUE" name="">
+<part>role_name</part>
+</key>
+</table>
+<table x="895" y="153" name="project_team_member">
+<row name="id" null="1" autoincrement="1">
+<datatype>sa.Integer</datatype>
+<default>NULL</default></row>
+<row name="member_id" null="0" autoincrement="0">
+<datatype>sa.Integer</datatype>
+<relation table="users" row="id" />
+</row>
+<row name="project_id" null="0" autoincrement="0">
+<datatype>sa.Integer</datatype>
+<relation table="projects" row="id" />
+</row>
+<row name="role_id" null="0" autoincrement="0">
+<datatype>sa.Integer</datatype>
+<relation table="roles" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+</sql>
